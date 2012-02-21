@@ -1,0 +1,11 @@
+Currently:
+
+- Opens a log file & kicks off a list of X processes.
+- Reads file, converts each line to binary & sends in a message to next process in list.
+- Process parses line, returns list of {name,value} tuples containing the data.
+
+Next steps:
+
+- Obviously do something with the data
+- Check out leex & yecc to do parsing properly
+- Think about implementing as a state machine, for the lolz.
