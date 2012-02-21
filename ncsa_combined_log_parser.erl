@@ -83,14 +83,14 @@ process_date(BLine, Results) ->
 	end.
 
 convert_month_to_monthnum(Month) when is_binary(Month) ->
-		Months = [
-			{<<"Jan">>,<<"01">>},{<<"Feb">>,<<"02">>},{<<"Mar">>,<<"03">>},
-			{<<"Apr">>,<<"04">>},{<<"May">>,<<"05">>},{<<"Jun">>,<<"06">>},
-			{<<"Jul">>,<<"07">>},{<<"Aug">>,<<"08">>},{<<"Sep">>,<<"09">>},
-			{<<"Oct">>,<<"10">>},{<<"Nov">>,<<"11">>},{<<"Dec">>,<<"12">>}
-		],
-		{_M,MonthNum} = lists:keyfind(Month, 1, Months),
-		MonthNum.
+	Months = [
+		{<<"Jan">>,<<"01">>},{<<"Feb">>,<<"02">>},{<<"Mar">>,<<"03">>},
+		{<<"Apr">>,<<"04">>},{<<"May">>,<<"05">>},{<<"Jun">>,<<"06">>},
+		{<<"Jul">>,<<"07">>},{<<"Aug">>,<<"08">>},{<<"Sep">>,<<"09">>},
+		{<<"Oct">>,<<"10">>},{<<"Nov">>,<<"11">>},{<<"Dec">>,<<"12">>}
+	],
+	{_M,MonthNum} = lists:keyfind(Month, 1, Months),
+	MonthNum.
 
 process_url(BLine, Results) ->
 	[Request, Remainder] = split_line(BLine, <<$",$ >>),
