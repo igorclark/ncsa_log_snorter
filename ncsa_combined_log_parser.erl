@@ -1,5 +1,5 @@
 % reads in NCSA combined-format log lines like this:
-% 63.84.95.12 - - [06/Feb/2012:04:17:29 +0000] "GET /comments/recent HTTP/1.1" 200 1 "http://www.cokepolarbowl.com/comments/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7"
+% 63.84.95.12 - - [06/Feb/2012:04:17:29 +0000] "GET /comments/recent HTTP/1.1" 200 1 "http://www.apple.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7"
 %
 -module(ncsa_combined_log_parser).
 -export([start/2]).
