@@ -13,16 +13,14 @@ start(FilePath, NumProcs) ->
 	parse(Fd, Pids, 1),
 	After = now(),
 	io:format("Stop:  ~p - ~p~n", [time(), After]),
-	{_Bmsec,Bsec,Busec} = Before,
-	{_Amsec,Asec,Ausec} = After,
-	Diff = ((Asec * 1000000) + Ausec) - ((Bsec * 1000000) + Busec),
-	io:format("Time taken: ~ps~n", [Diff/1000000]),
+	Diff = timer:now_diff(After, Before) / 1000000,
+	io:format("Time taken: ~ps~n", [Diff]),
 	stop_procs(Pids),
 	file:close(Fd).
 
 create_procs(NumProcs) -> create_procs(NumProcs, []).
 
-create_procs(NumProcs, Acc) when NumProcs =:= 0 -> Acc;
+create_procs(0, Acc) -> Acc;
 create_procs(NumProcs, Acc) ->
 	create_procs(NumProcs-1, [spawn(?MODULE, ready, [])|Acc]).
 
@@ -47,6 +45,7 @@ ready() ->
 		{process_line, BLine, _Requestor} ->
 		%	io:format("~p --> ~p: ~p~n", [self(), _Requestor,lists:reverse(process_ip(BLine,[]))]),
 			_Data = lists:reverse(process_ip(BLine,[])),
+			io:format("~p~n", _Data),
 			ready();
 		stop ->
 			ok
