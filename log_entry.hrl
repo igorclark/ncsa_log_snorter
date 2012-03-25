@@ -1,0 +1,1 @@
+-record(log_entry,{id,ip,date,url,status_code,response_size,referer_url,user_agent}).
